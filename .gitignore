@@ -1,0 +1,6 @@
+# Netlify & Vercel state
+.netlify/
+.vercel/
+node_modules/
+.DS_Store
+

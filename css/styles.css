@@ -1,0 +1,129 @@
+/* BookMe Cameroun - Styles principaux & Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+  --brand-primary: #0F766E;      /* Émeraude profond */
+  --brand-primary-light: #14B8A6;
+  --brand-accent: #F59E0B;       /* Or / Ambre chaud */
+  --brand-dark: #0F172A;
+  --om-orange: #FF7900;          /* Orange Money */
+  --momo-yellow: #FFCC00;        /* MTN MoMo */
+  --momo-blue: #004F71;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Animations fluides */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glassmorphism & Cartes */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.18) 0%, transparent 45%),
+              radial-gradient(circle at 15% 80%, rgba(20, 184, 166, 0.22) 0%, transparent 50%),
+              linear-gradient(135deg, #042F2E 0%, #0F172A 60%, #1E293B 100%);
+}
+
+.card-hover {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+}
+
+/* Badges Mobile Money */
+.badge-om {
+  background: #FF7900;
+  color: #FFFFFF;
+}
+
+.badge-momo {
+  background: #FFCC00;
+  color: #004F71;
+}
+
+/* Créneaux horaires */
+.slot-btn {
+  transition: all 0.15s ease;
+}
+
+.slot-btn:not(:disabled):hover {
+  border-color: #0D9488;
+  background-color: #F0FDFA;
+  color: #0F766E;
+}
+
+.slot-btn.selected {
+  background-color: #0F766E !important;
+  color: #FFFFFF !important;
+  border-color: #0F766E !important;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.28);
+}
+
+.slot-btn:disabled {
+  background-color: #F1F5F9;
+  color: #94A3B8;
+  border-color: #E2E8F0;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Scrollbar élégante */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Impression Reçu de réservation */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+

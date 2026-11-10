@@ -1,0 +1,13 @@
+{
+  "name": "bookme-cameroun",
+  "version": "1.0.0",
+  "description": "Plateforme numérique de réservation de prestations de services au Cameroun (Douala)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["bookme", "cameroun", "douala", "reservation", "mobile-money"],
+  "author": "BookMe Cameroun",
+  "license": "MIT"
+}
+
