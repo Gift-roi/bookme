@@ -6,6 +6,10 @@
   "scripts": {
     "start": "npx serve ."
   },
+  "dependencies": {
+    "ai": "^6.0.0",
+    "zod": "^3.24.0"
+  },
   "keywords": ["bookme", "cameroun", "douala", "reservation", "mobile-money"],
   "author": "BookMe Cameroun",
   "license": "MIT"

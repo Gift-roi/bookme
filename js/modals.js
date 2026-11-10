@@ -323,9 +323,12 @@ Object.assign(window.BookMeApp.prototype, {
       <div class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this) app.closeModal()">
         <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-slate-200 animate-fade-in">
           <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-            <div>
-              <span class="text-[10px] font-bold uppercase text-teal-700">Reçu Officiel BookMe Cameroun</span>
-              <h3 class="text-base font-extrabold text-slate-900">Réf : ${b.id}</h3>
+            <div class="flex items-center gap-2.5">
+              <img src="./assets/logo.svg" alt="BookMe" class="w-9 h-9 rounded-lg shadow-sm" />
+              <div>
+                <span class="text-[10px] font-bold uppercase text-teal-700">Reçu Officiel BookMe Cameroun</span>
+                <h3 class="text-base font-extrabold text-slate-900">Réf : ${b.id}</h3>
+              </div>
             </div>
             ${window.BookMeViews.statusBadge(b.status)}
           </div>
@@ -389,7 +392,10 @@ Object.assign(window.BookMeApp.prototype, {
       <div class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) app.closeModal()">
         <div class="bg-white rounded-3xl max-w-lg w-full p-6 space-y-5 shadow-2xl my-8 animate-fade-in text-xs">
           <div class="flex items-center justify-between">
-            <h3 class="text-lg font-extrabold text-slate-900">Comptes & Inscription BookMe (CL01 / PR01)</h3>
+            <div class="flex items-center gap-2.5">
+              <img src="./assets/logo.svg" alt="BookMe" class="w-8 h-8 rounded-lg shadow-sm" />
+              <h3 class="text-lg font-extrabold text-slate-900">Comptes & Inscription BookMe (CL01 / PR01)</h3>
+            </div>
             <button onclick="app.closeModal()" class="font-bold text-slate-500">✕</button>
           </div>
 
@@ -407,6 +413,17 @@ Object.assign(window.BookMeApp.prototype, {
               </button>
             </div>
           </div>
+
+          <form onsubmit="app.handleLogin(event)" class="space-y-2.5 border-t border-slate-200 pt-4">
+            <p class="font-extrabold text-slate-900 text-sm">Se connecter avec vos identifiants (CL02 / Admin)</p>
+            <div class="grid sm:grid-cols-2 gap-2.5">
+              <input type="text" name="emailOrPhone" required placeholder="E-mail ou Tél (ex: admin@bookme.cm)" class="border border-slate-300 rounded-xl px-3 py-2" />
+              <input type="password" name="password" required placeholder="Mot de passe (ex: adminpassword)" class="border border-slate-300 rounded-xl px-3 py-2" />
+            </div>
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold">
+              Se connecter
+            </button>
+          </form>
 
           <form onsubmit="app.handleRegister(event)" class="space-y-3 border-t border-slate-200 pt-4">
             <p class="font-extrabold text-slate-900 text-sm">Créer un nouveau compte Client ou Professionnel</p>
@@ -435,6 +452,20 @@ Object.assign(window.BookMeApp.prototype, {
         </div>
       </div>
     `;
+  },
+
+  handleLogin(e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    try {
+      const u = this.store.login(fd.get('emailOrPhone'), fd.get('password'));
+      this.closeModal();
+      this.syncSpaceWithUser();
+      this.renderAll();
+      this.toast(`Connecté en tant que ${u.name} (${u.role.toUpperCase()})`);
+    } catch (err) {
+      this.toast(err.message, 'error');
+    }
   },
 
   handleRegister(e) {

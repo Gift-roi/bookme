@@ -100,10 +100,8 @@ class BookMeApp {
 
     nav.innerHTML = `
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="app.switchSpace('client'); app.clientTab='explore'; app.renderAll();">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-teal-800 flex items-center justify-center text-white font-extrabold text-xl shadow-md">
-            B
-          </div>
+        <div class="flex items-center gap-3 cursor-pointer group" onclick="app.switchSpace('client'); app.clientTab='explore'; app.renderAll();">
+          <img src="./assets/logo.svg" alt="Logo BookMe Cameroun" class="w-10 h-10 rounded-xl shadow-md group-hover:scale-105 transition-transform duration-200" />
           <div>
             <div class="flex items-center gap-1.5">
               <span class="font-display font-extrabold text-lg tracking-tight text-slate-900">Book<span class="text-teal-700">Me</span></span>
